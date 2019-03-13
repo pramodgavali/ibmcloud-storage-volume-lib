@@ -141,7 +141,6 @@ func main() {
 			Iops := "0"
 			tier := ""
 			providerType := ""
-
 			var choice int
 			fmt.Printf("\nPlease enter storage type choice 1- for endurance  2- for performance: ")
 			_, er11 = fmt.Scanf("%d", &choice)
@@ -153,7 +152,7 @@ func main() {
 				volume.ProviderType = provider.VolumeProviderType(providerType)
 			}
 
-			fmt.Printf("\nPlease enter datacenter name like dal09, dal10 or mex01  etc: ")
+			fmt.Printf("\nPlease enter datacenter name like us-south-1(for vpc), dal09, dal10 or mex01  etc: ")
 			_, er11 = fmt.Scanf("%s", &dcName)
 			volume.Az = dcName
 
@@ -231,9 +230,10 @@ func main() {
 		} else if choiceN == 8 {
 			fmt.Println("You selected choice to delete volume")
 			volume := &provider.Volume{}
-			fmt.Printf("Please enter volume ID for delete:")
+			fmt.Printf("Please enter volume ID  or name for delete:")
 			_, er11 = fmt.Scanf("%s", &volumeID)
 			volume.VolumeID = volumeID
+			volume.Name = &volumeID
 			er11 = sess.DeleteVolume(volume)
 			if er11 == nil {
 				logger.Info("Successfully deleted volume ================>", zap.Reflect("Volume ID", volumeID))

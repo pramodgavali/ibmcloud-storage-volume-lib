@@ -11,9 +11,9 @@
 package config
 
 import (
-	"github.com/kelseyhightower/envconfig"
 	"github.com/IBM/ibmcloud-storage-volume-lib/config"
-	"github.com/IBM/ibmcloud-storage-volume-lib/lib/utils/metrics"
+	"github.com/IBM/ibmcloud-storage-volume-lib/volume-providers/vpc/metrics"
+	"github.com/kelseyhightower/envconfig"
 
 	"go.uber.org/zap"
 )
